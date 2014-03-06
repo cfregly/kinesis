@@ -33,7 +33,7 @@ import com.amazonaws.services.kinesis.model.PutRecordResult;
 
 public class AmazonKinesisSample {
 
-    static AmazonKinesisClient kinesisClient;
+    private static AmazonKinesisClient kinesisClient;
     private static final Log LOG = LogFactory.getLog(AmazonKinesisSample.class);
 
     private static void init() throws Exception {
