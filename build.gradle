@@ -18,6 +18,9 @@ apply from: file('gradle/license.gradle')
 apply from: file('gradle/release.gradle')
 
 dependencies {
+        compile('org.apache.spark:spark-streaming_2.10:0.9.0-incubating')
+        compile('org.apache.spark:spark-streaming-flume_2.10:0.9.0-incubating')
+        compile('org.apache.spark:spark-streaming-twitter_2.10:0.9.0-incubating')
         compile('com.amazonaws:aws-java-sdk:1.7.2')
         testCompile('junit:junit:4.10')
         testCompile('org.mockito:mockito-all:1.9.5')
