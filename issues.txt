@@ -1,0 +1,10 @@
+Maven
+    skipTests=true
+    comment out pom.xml references to mqtt due to cloudera repository issue?
+    increase PermGenSize (normal()
+    
+Development
+    need to use "lazy" qualifier otherwise NotSerializableException for Kinesis and BlockGenerator, etc 
+        
+Runtime
+    conf/log4j.properties.template -> log4j.properties
