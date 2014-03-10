@@ -20,7 +20,7 @@ import org.apache.spark.Logging
  * Note:  This won't run as it's missing org.apache.spark.streaming.dstream.KinesisInputDStream.
  * 		  I've commented out the missing references to preserve the build.
  */
-object KinesisWordCount extends Logging {
+object KinesisWordCountParviz extends Logging {
   def main(args: Array[String]) {
 	  	
 	if (args.length < 2) {
