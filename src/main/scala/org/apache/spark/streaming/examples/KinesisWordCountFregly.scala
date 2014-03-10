@@ -66,17 +66,13 @@ object KinesisWordCountFregly extends Logging {
 
 	  	// map each word to a (word, 1) tuple
 	  	val wordCounts = words.map((_, 1))
-	  	// reduce (aggregate) by work (key) to get the counts for each word over a rolling window of 10 seconds
-	  		.reduceByKeyAndWindow(_ + _, Seconds(10))	  		  	
-	  		    
-	  	// print the word count
-	  	//  ** this is an output action which causes the RDDs to actually materialize. 
-	  	// 	   everything up til now is lazily defined.
-	  	wordCounts.foreach((rdd, time) => {
-	  	    logInfo("RDD: " + rdd.toDebugString)
-	  	    logInfo("RDD time: " + time)
-		})
-		
+	  		// reduce (aggregate) by work (key) to get the counts for each word over a rolling window of 10 seconds
+	  		.reduceByKeyAndWindow(_ + _, Seconds(10))	
+	  		.map{case (word, count) => (count, word)}	  		
+	  	
+	  	// output action - materializes the RDDs
+	  	wordCounts.print()
+	  	
 	  	// start the StreamingContext
 	  	ssc.start()
 
