@@ -42,7 +42,7 @@ public class KinesisStreamDataProducer {
         for (int j = 0; j < 1000; j++) {
             PutRecordRequest putRecordRequest = new PutRecordRequest();
             putRecordRequest.setStreamName(myStreamName);
-            putRecordRequest.setData(ByteBuffer.wrap(String.format("testData-%d", j).getBytes()));
+            putRecordRequest.setData(ByteBuffer.wrap(String.format("testData-%d testData-%d testData-%d", j, j, j).getBytes()));
             putRecordRequest.setPartitionKey(String.format("partitionKey-%d", j));
             PutRecordResult putRecordResult = kinesisClient.putRecord(putRecordRequest);
             System.out.println("Successfully putrecord, partition key : " + putRecordRequest.getPartitionKey()
