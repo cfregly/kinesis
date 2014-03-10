@@ -56,8 +56,15 @@ object KinesisWordCountFregly extends Logging {
 		// TODO:  input validation and usage instructions
 	  
 	    // create the StreamingContext with args(0) - master URL (or local[n] for local mode)
-	  	val ssc : StreamingContext = new StreamingContext(args(0), "KinesisWordCount", Seconds(1),	System.getenv("SPARK_HOME"), StreamingContext.jarOfClass(KinesisWordCountFregly.this.getClass))
+	  	//val ssc : StreamingContext = new StreamingContext(args(0), "KinesisWordCount", Seconds(10)
+	  	    //System.getenv("SPARK_HOME")
+	  	    //StreamingContext.jarOfClass(KinesisWordCountFregly.this.getClass)
+	  	    //)
+	  	//)
 
+		val ssc = new StreamingContext(args(0), "KinesisWordCount", Seconds(10), System.getenv("SPARK_HOME"), Seq(System.getenv("SPARK_EXAMPLES")))
+		
+		
 	  	// setup KinesisStreamReceiver with args(1) - streamName
 	  	val stream : DStream[String] = ssc.networkStream[String](new KinesisStreamReceiver(args(1), null))	  	
 	  	

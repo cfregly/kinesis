@@ -39,7 +39,7 @@ public class KinesisStreamDataProducer {
 
         logger.info("Putting records in stream : " + myStreamName);
         // Write records to the stream
-        for (int j = 0; j < 1000; j++) {
+        for (int j = 0; j < 100; j++) {
             PutRecordRequest putRecordRequest = new PutRecordRequest();
             putRecordRequest.setStreamName(myStreamName);
             putRecordRequest.setData(ByteBuffer.wrap(String.format("testData-%d testData-%d testData-%d", j, j, j).getBytes()));
