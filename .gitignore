@@ -1,1 +1,5 @@
 /eclipse
+/.gradle
+/build
+/eclipse-classes
+/.cache
