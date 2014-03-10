@@ -1,4 +1,4 @@
-package org.apache.spark.streaming.kinesis
+package org.apache.spark.streaming.examples
 
 import org.junit.Test
 import org.junit.Assert._
