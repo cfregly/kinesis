@@ -72,11 +72,13 @@ object KinesisWordCountFregly extends Logging {
 	  	// print the word count
 	  	//  ** this is an output action which causes the RDDs to actually materialize. 
 	  	// 	   everything up til now is lazily defined.
-	  	wordCounts.print()
-
+	  	wordCounts.foreach((rdd, time) => {
+	  	    logInfo("RDD: " + rdd.toDebugString)
+	  	    logInfo("RDD time: " + time)
+		})
+		
 	  	// start the StreamingContext
 	  	ssc.start()
-
 
 	  	// wait for execution to stop
 	  	//   (exceptions will bubble up in this thread)
